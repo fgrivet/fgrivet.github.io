@@ -1,0 +1,54 @@
+name: Generate CV from index.html
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'       # Triggered only when index.html changes
+  workflow_dispatch:       # Manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  build-cv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install beautifulsoup4 lxml
+
+      - name: Generate cv.html from index.html
+        run: python generate_cv.py
+
+      - name: Install Chromium
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y chromium-browser
+
+      - name: Generate cv.pdf from cv.html
+        run: |
+          chromium-browser \
+            --headless \
+            --disable-gpu \
+            --no-sandbox \
+            --print-to-pdf=cv.pdf \
+            --print-to-pdf-no-header \
+            --run-all-compositor-stages-before-draw \
+            "file://${{ github.workspace }}/cv.html"
+
+      - name: Commit and push cv.html + cv.pdf
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add cv.html cv.pdf
+          git diff --cached --quiet || git commit -m "chore: auto-regenerate cv.html and cv.pdf [skip ci]"
+          git push
