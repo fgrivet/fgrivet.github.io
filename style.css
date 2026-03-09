@@ -38,7 +38,7 @@ nav {
   border-bottom: 1px solid var(--faint);
 }
 .nav-inner {
-  max-width: 1000px;
+  max-width: 760px;
   margin: auto;
   padding: 0 2rem;
   display: flex;
@@ -72,7 +72,7 @@ nav {
 
 /* LAYOUT */
 .container {
-  max-width: 1000px;
+  max-width: 760px;
   margin: auto;
   padding: 0 2rem;
 }
@@ -90,6 +90,7 @@ section + section {
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 2rem;
+  animation: fadeUp 0.5s 0.35s ease both;
 }
 
 /* HERO */
@@ -186,6 +187,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  animation: fadeUp 0.5s 0.4s ease both;
 }
 .tag {
   font-family: "IBM Plex Mono", monospace;
@@ -202,6 +204,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  animation: fadeUp 0.5s 0.4s ease both;
 }
 .pub-item {
   display: grid;
@@ -238,6 +241,48 @@ h1 {
 .pub-authors strong {
   color: var(--ink);
   font-weight: 500;
+}
+.pub-citation-block {
+  position: relative;
+  background: var(--bg);
+  border: 1px solid var(--bg);
+  border-radius: 6px;
+  font-family: monospace;
+  margin: 1rem 0;
+  padding-left: 1rem;
+}
+.pub-citation {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: wrap;
+  word-wrap: break-word;
+}
+.pub-copy-btn {
+  position: static;
+  background: var(--accent-light);
+  border: 1px solid var(--accent-light);
+  color: var(--accent);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  line-height: 1;
+  float: right;
+  /* top: 0.5rem;
+  right: 0.5rem; */
+  opacity: 1;
+  transition: all 0.2s;
+  margin: 5px 5px 10px 10px;
+}
+.pub-copy-btn:hover {
+  border-color: var(--accent);
+}
+.pub-copy-btn.copied {
+  opacity: 1;
+  color: #349c42;
 }
 .pub-venue {
   font-size: 0.78rem;

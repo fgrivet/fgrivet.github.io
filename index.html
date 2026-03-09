@@ -14,6 +14,18 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <script>
+      function copyToClipboard(btn, text) {
+        navigator.clipboard.writeText(text).then(() => {
+          btn.classList.add("copied");
+          btn.innerText = "Copied";
+          setTimeout(() => {
+            btn.classList.remove("copied");
+            btn.innerText = "Copy";
+          }, 2000);
+        });
+      }
+    </script>
   </head>
   <body>
     <nav>
@@ -129,6 +141,24 @@
                 <strong>Florian Grivet</strong>, Louise Travé-Massuyès
               </div>
               <div class="pub-venue">Array · 2026</div>
+              <div class="pub-citation-block">
+                <button
+                  class="pub-copy-btn"
+                  onclick="copyToClipboard(this, this.nextElementSibling.innerText)"
+                >
+                  Copy
+                </button>
+                <code class="pub-citation"
+                  >F. Grivet and L. Travé-Massuyès, Cost trade-offs in matrix
+                  inversion updates for streaming outlier detection. Array
+                  (2026), doi:
+                  <a
+                    href="https://doi.org/10.1016/j.array.2026.100737"
+                    target="_blank"
+                    >https://doi.org/10.1016/j.array.2026.100737</a
+                  >.</code
+                >
+              </div>
               <div class="pub-badges">
                 <a
                   href="https://doi.org/10.1016/j.array.2026.100737"
@@ -143,7 +173,12 @@
                   target="_blank"
                   >Code</a
                 >
-                <!-- <a href="#" class="badge">BibTeX</a> -->
+                <a
+                  href="https://www.sciencedirect.com/sdfe/arp/cite?pii=S2590005626000603&format=text%2Fx-bibtex&withabstract=true"
+                  class="badge"
+                  target="_blank"
+                  >BibTex</a
+                >
               </div>
             </div>
           </div>
@@ -161,6 +196,24 @@
                 Hinderer
               </div>
               <div class="pub-venue">ANITI Days · Toulouse, France · 2026</div>
+              <div class="pub-citation-block">
+                <button
+                  class="pub-copy-btn"
+                  onclick="copyToClipboard(this, this.nextElementSibling.innerText)"
+                >
+                  Copy
+                </button>
+                <code class="pub-citation"
+                  >F. Grivet, L. Travé-Massuyès, D. Henrion, J.-B. Lasserre, L.
+                  Vintenat, and C. Hinderer, Christoffel Function based Anomaly
+                  Detection for Satellite Telemetry. ANITI Days 2026, Feb 2026,
+                  Toulouse, France.<a
+                    href="https://hal.science/hal-05521204"
+                    target="_blank"
+                    >(hal-05521204)</a
+                  >.</code
+                >
+              </div>
               <div class="pub-badges">
                 <a
                   href="https://hal.science/hal-05521204v1"
@@ -173,6 +226,12 @@
                   class="badge"
                   target="_blank"
                   >Poster</a
+                >
+                <a
+                  href="https://hal.science/hal-05521204v1/bibtex"
+                  class="badge"
+                  target="_blank"
+                  >BibTex</a
                 >
               </div>
             </div>
