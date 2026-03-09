@@ -13,6 +13,7 @@ import re
 src = Path("index.html").read_text(encoding="utf-8")
 soup = BeautifulSoup(src, "lxml")
 
+
 # ── Helper: extract inner HTML of a section by id ─────────────────────────────
 def section_inner(section_id):
     sec = soup.find(id=section_id)
@@ -21,21 +22,22 @@ def section_inner(section_id):
     container = sec.find(class_="container") or sec
     return container
 
+
 # ── Pull data from index.html ──────────────────────────────────────────────────
-about   = section_inner("about")
-cv      = section_inner("cv")
-pubs    = section_inner("publications")
+about = section_inner("about")
+cv = section_inner("cv")
+pubs = section_inner("publications")
 research = section_inner("research")
 
 # Name & role
 name_tag = about.find("h1")
-name     = name_tag.get_text(strip=True) if name_tag else "Prénom Nom"
+name = name_tag.get_text(strip=True) if name_tag else "Prénom Nom"
 
 role_tag = about.find(class_="hero-role")
-role     = role_tag.get_text(strip=True) if role_tag else ""
+role = role_tag.get_text(strip=True) if role_tag else ""
 
-bio_tag  = about.find(class_="hero-bio")
-bio      = bio_tag.get_text(strip=True) if bio_tag else ""
+bio_tag = about.find(class_="hero-bio")
+bio = bio_tag.get_text(strip=True) if bio_tag else ""
 
 
 # # Contact links (nav hero-links buttons)
@@ -48,6 +50,7 @@ bio      = bio_tag.get_text(strip=True) if bio_tag else ""
 #         if href and href != "#" and label.lower() not in ("cv",):
 #             contact_items.append((label, href))
 
+
 # ── Rebuild the cv section markup (strip section-label, keep tl + skills) ─────
 def clean_section(container):
     """Return inner HTML of container, removing .section-label divs."""
@@ -58,9 +61,10 @@ def clean_section(container):
     inner = clone.find(class_="container") or clone
     return inner.decode_contents()
 
-cv_html   = clean_section(cv)
-pub_html  = clean_section(pubs)
-res_html  = clean_section(research)
+
+cv_html = clean_section(cv)
+pub_html = clean_section(pubs)
+res_html = clean_section(research)
 
 # # ── Build contact line ─────────────────────────────────────────────────────────
 # contact_html = "\n".join(
@@ -97,6 +101,7 @@ output = f"""<!DOCTYPE html>
       <a href="mailto:florian.grivet@cnes.fr"><i class="fa-solid fa-envelope"></i> florian.grivet@cnes.fr</a>
       <a href="https://github.com/fgrivet" target="_blank"><i class="fa-brands fa-github"></i> github.com/fgrivet</a>
       <a href="https://scholar.google.com/citations?user=eT-QkogAAAAJ&hl=fr&oi=ao" target="_blank"><i class="fa-brands fa-google-scholar"></i> Google Scholar</a>
+      <a href="https://orcid.org/0009-0007-7096-3258" class="btn btn-ghost" target="_blank"><i class="fa-brands fa-orcid"></i> orcid.org/0009-0007-7096-3258</a>
       <a href="https://linkedin.com/in/floriangrivet" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/floriangrivet</a>
     </div>
     <img src="profile_picture.jpg" alt="Florian Grivet" class="cv-avatar">
