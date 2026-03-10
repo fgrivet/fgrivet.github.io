@@ -121,11 +121,14 @@ h1 {
   animation: fadeUp 0.5s 0.1s ease both;
 }
 .hero-bio {
-  color: #444;
+  color: var(--ink);
   font-size: 0.97rem;
   max-width: 500px;
-  margin-bottom: 1.8rem;
+  margin-bottom: 0.5rem;
   animation: fadeUp 0.5s 0.2s ease both;
+}
+.hero-bio.last {
+  margin-bottom: 1.8rem;
 }
 .hero-links {
   display: flex;

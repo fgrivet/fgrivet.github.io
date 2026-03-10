@@ -141,7 +141,17 @@ header h1 {
   margin-top: 0;
 }
 
+.no-cv {
+  display: none;
+}
+
 /* ── Reuse index.html classes verbatim ── */
+.hero-bio {
+  margin-bottom: 0.5rem;
+}
+.hero-bio.last {
+  margin-bottom: 1.8rem;
+}
 
 /* Timeline */
 .tl {

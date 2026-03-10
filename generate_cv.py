@@ -34,10 +34,10 @@ name_tag = about.find("h1")
 name = name_tag.get_text(strip=True) if name_tag else "Prénom Nom"
 
 role_tag = about.find(class_="hero-role")
-role = role_tag.get_text(strip=True) if role_tag else ""
+role = role_tag.get_text(strip=True, separator="<br>") if role_tag else ""
 
-bio_tag = about.find(class_="hero-bio")
-bio = bio_tag.get_text(strip=True) if bio_tag else ""
+bio_tag = " ".join(map(str, list(about.find_all(class_="hero-bio"))))
+# bio = bio_tag.get_text(strip=True) if bio_tag else ""
 
 
 # # Contact links (nav hero-links buttons)
@@ -97,7 +97,7 @@ output = f"""<!DOCTYPE html>
     <h1>{name}</h1>
     <div class="h-role">{role}</div>
     <div class="h-contacts">
-    <span>📍 Toulouse, France</span>
+    <span><i class="fa-solid fa-location-dot"></i> Toulouse, France</span>
       <a href="mailto:florian.grivet@cnes.fr"><i class="fa-solid fa-envelope"></i> florian.grivet@cnes.fr</a>
       <a href="https://github.com/fgrivet" target="_blank"><i class="fa-brands fa-github"></i> github.com/fgrivet</a>
       <a href="https://scholar.google.com/citations?user=eT-QkogAAAAJ&hl=fr&oi=ao" target="_blank"><i class="fa-brands fa-google-scholar"></i> Google Scholar</a>
