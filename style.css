@@ -326,6 +326,25 @@ h1 {
   position: relative;
   padding-bottom: 2rem;
 }
+#AllButton {
+  margin-left: 55px;
+}
+.tl-item.education .tl-body h3::before,
+.tl-item.experience .tl-body h3::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+}
+.tl-item.education .tl-body h3::before {
+  content: "\f19d";
+}
+.tl-item.experience .tl-body h3::before {
+  content: "\f0b1";
+}
+.tl-item.education.experience .tl-body h3::before {
+  content: "\f19d \f0b1";
+  letter-spacing: 8px;
+}
 .tl-item:last-child {
   padding-bottom: 0;
 }

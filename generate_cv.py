@@ -5,9 +5,9 @@ Extracts the #cv, #publications, and #about sections from index.html
 and assembles a print-ready cv.html in the same visual style.
 """
 
-from bs4 import BeautifulSoup
 from pathlib import Path
-import re
+
+from bs4 import BeautifulSoup
 
 # ── Load source ────────────────────────────────────────────────────────────────
 src = Path("index.html").read_text(encoding="utf-8")

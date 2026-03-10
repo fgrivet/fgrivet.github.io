@@ -29,6 +29,17 @@ jobs:
       - name: Generate cv.html from index.html
         run: python generate_cv.py
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Prettier
+        run: npm install -g prettier
+
+      - name: Format files with Prettier
+        run: prettier --write .
+
       - name: Install Chromium
         run: |
           sudo apt-get update -qq
