@@ -298,6 +298,11 @@ h1 {
   gap: 0.4rem;
   flex-wrap: wrap;
 }
+.pub-badges img {
+  height: 12px;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
 .badge {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.68rem;
@@ -312,6 +317,25 @@ h1 {
 .badge:hover {
   color: var(--accent);
   border-color: var(--accent);
+}
+.badge.HAL::before,
+.badge.ArXiV::before {
+  content: "";
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+  margin-bottom: 2px;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+.badge.HAL::before {
+  background-image: url(images/HAL.png);
+}
+.badge.ArXiV::before {
+  background-image: url(images/arxiv.svg);
 }
 
 /* CV / TIMELINE */
